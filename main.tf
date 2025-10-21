@@ -1,15 +1,15 @@
-Resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "rg" {
     name = var.resource_group_name
     location = var.location
 }
 
-Resource "azurerm_network_security_group" "exam_nsg" {
+resource "azurerm_network_security_group" "exam_nsg" {
     name                      = "iac_devops_nsg"
     location                  = azurerm_resource_group.rg.location
     resource_group_name       = azurerm_resource_group.rg.name
 } 
 
-Resource "azurerm_network_security_rule" "insecure_ssh" {
+resource "azurerm_network_security_rule" "insecure_ssh" {
     name     = "allow-ssh-public"
     priority = 100
     direction = "Inbound"
